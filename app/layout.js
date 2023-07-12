@@ -1,5 +1,6 @@
 "use client";
 
+import CartContextProvider from "@/components/CartContext";
 import StyledComponentsRegistry from "./registry";
 import { createGlobalStyle } from "styled-components";
 
@@ -7,7 +8,8 @@ const GlobalStyles = createGlobalStyle`
 body{
 padding:0;
 margin:0;
-font-family: 'Roboto', sans-serif;
+font-family: 'Poppins', sans-serif;
+background-color: #eee;
 }
 `;
 
@@ -16,7 +18,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <StyledComponentsRegistry>
         <GlobalStyles />
-        <body>{children}</body>
+        <CartContextProvider>
+          <body>{children}</body>
+        </CartContextProvider>
       </StyledComponentsRegistry>
     </html>
   );

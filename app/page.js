@@ -1,21 +1,31 @@
 import Featured from "@/components/Featured";
 import Header from "@/components/Header";
+import NewProducts from "@/components/NewProducts";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 
 export async function getData() {
   const featuredProductId = "64957bc8e2de4f09b04704ab";
   await mongooseConnect();
-  const product = await Product.findById(featuredProductId);
-  return JSON.parse(JSON.stringify(product));
+  const featuredProduct = await Product.findById(featuredProductId);
+  const newProducts = await Product.find({}, null, {
+    sort: { _id: -1 },
+    limit: 10,
+  });
+
+  return {
+    featuredProduct: JSON.parse(JSON.stringify(featuredProduct)),
+    newProducts: JSON.parse(JSON.stringify(newProducts)),
+  };
 }
 
 export default async function Home() {
-  const product = await getData();
+  const { featuredProduct, newProducts } = await getData();
   return (
     <div>
       <Header />
-      <Featured product={product} />
+      <Featured product={featuredProduct} />
+      <NewProducts products={newProducts} />
     </div>
   );
 }

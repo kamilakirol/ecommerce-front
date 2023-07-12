@@ -1,5 +1,6 @@
 import { StyleSheetManager, css, styled } from "styled-components";
 import isPropValid from "@emotion/is-prop-valid";
+import { primary } from "@/lib/colors";
 
 export const BtnStyle = css`
   border: 0;
@@ -8,6 +9,9 @@ export const BtnStyle = css`
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: semi-bold;
   svg {
     height: 16px;
     margin-right: 5px;
@@ -30,10 +34,19 @@ export const BtnStyle = css`
     `}
 ${(props) =>
     props.primary &&
+    !props.outline &&
     css`
-      background-color: #5542f6;
+      background-color: ${primary};
       color: #fff;
-      border: 1px solid #5542f6;
+      border: 1px solid ${primary};
+    `}
+    ${(props) =>
+    props.primary &&
+    props.outline &&
+    css`
+      background-color: transparent;
+      color: ${primary};
+      border: 1px solid ${primary};
     `}
 ${(props) =>
     props.size === "l" &&
