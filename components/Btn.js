@@ -18,6 +18,12 @@ export const BtnStyle = css`
   }
 
   ${(props) =>
+    props.block &&
+    css`
+      display: block;
+      width: 100%;
+    `}
+  ${(props) =>
     props.white &&
     !props.outline &&
     css`
@@ -32,6 +38,23 @@ export const BtnStyle = css`
       color: #fff;
       border: 1px solid #fff;
     `}
+
+    ${(props) =>
+    props.black &&
+    !props.outline &&
+    css`
+      background-color: #000;
+      color: #fff;
+    `}
+    ${(props) =>
+    props.black &&
+    props.outline &&
+    css`
+      background-color: transparent;
+      color: #000;
+      border: 1px solid #000;
+    `}
+
 ${(props) =>
     props.primary &&
     !props.outline &&
