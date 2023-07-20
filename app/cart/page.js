@@ -96,13 +96,15 @@ export default function CartPage() {
             {products?.length > 0 && (
               <Tabel>
                 <thead>
-                  <th>Product</th>
-                  <th>Quantity</th>
-                  <th>Price</th>
+                  <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                  </tr>
                 </thead>
                 <tbody>
                   {products.map((product) => (
-                    <tr>
+                    <tr key={product._id}>
                       <ProductInfoCell>
                         <ProductImageBox>
                           <img src={product.images[0]} alt={product.title} />
@@ -189,6 +191,11 @@ export default function CartPage() {
                   value={country}
                   name="country"
                   onChange={(e) => setCountry(e.target.value)}
+                />
+                <input
+                  type="hidden"
+                  name="products"
+                  value={cartProducts.join(",")}
                 />
                 <Btn black block typ="submit">
                   Continue to payment
