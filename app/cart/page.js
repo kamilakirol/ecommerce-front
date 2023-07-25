@@ -115,7 +115,6 @@ export default function CartPage() {
   if (isSuccess) {
     return (
       <>
-        <Header />
         <Center>
           <ColumnsWrapper>
             <Box>
@@ -130,7 +129,6 @@ export default function CartPage() {
 
   return (
     <>
-      <Header />
       <Center>
         <ColumnsWrapper>
           <Box>

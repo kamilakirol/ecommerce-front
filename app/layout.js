@@ -3,6 +3,7 @@
 import CartContextProvider from "@/components/CartContext";
 import StyledComponentsRegistry from "./registry";
 import { createGlobalStyle } from "styled-components";
+import Header from "@/components/Header";
 
 const GlobalStyles = createGlobalStyle`
 body{
@@ -19,7 +20,10 @@ export default function RootLayout({ children }) {
       <StyledComponentsRegistry>
         <GlobalStyles />
         <CartContextProvider>
-          <body>{children}</body>
+          <body>
+            <Header />
+            {children}
+          </body>
         </CartContextProvider>
       </StyledComponentsRegistry>
     </html>

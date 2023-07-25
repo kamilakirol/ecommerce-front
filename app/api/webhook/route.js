@@ -2,9 +2,6 @@ import { mongooseConnect } from "@/lib/mongoose";
 import { Order } from "@/models/Order";
 const stripe = require("stripe")(process.env.STRIPE_SK);
 
-const endpointSecret =
-  "whsec_a3732faa2a82046d73f9cb8427b490cfca025b798458850c34baa145c28576fc";
-
 export async function POST(req) {
   await mongooseConnect();
   const body = await req.text();
@@ -13,7 +10,11 @@ export async function POST(req) {
   let event;
 
   try {
-    event = stripe.webhooks.constructEvent(body, sig, endpointSecret);
+    event = stripe.webhooks.constructEvent(
+      body,
+      sig,
+      process.env.ENDPOINT_SECRET
+    );
   } catch (err) {
     return new Response(`Webhook Error: ${err.message} `, {
       status: 400,

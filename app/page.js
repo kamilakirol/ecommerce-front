@@ -1,5 +1,4 @@
 import Featured from "@/components/Featured";
-import Header from "@/components/Header";
 import NewProducts from "@/components/NewProducts";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
@@ -23,7 +22,6 @@ export default async function Home() {
   const { featuredProduct, newProducts } = await getData();
   return (
     <div>
-      <Header />
       <Featured product={featuredProduct} />
       <NewProducts products={newProducts} />
     </div>
