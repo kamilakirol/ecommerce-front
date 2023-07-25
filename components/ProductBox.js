@@ -1,6 +1,5 @@
 import { styled } from "styled-components";
 import Btn from "./Btn";
-import CartIcon from "./icons/CartIcon";
 import Link from "next/link";
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
