@@ -1,14 +1,10 @@
 "use client";
 
-import { styled } from "styled-components";
 import Center from "./Center";
 import ProductsGrid from "./ProductsGrid";
+import Title from "./Title";
 
-const Title = styled.h1`
-  font-size: 1.5em;
-`;
-
-const ProductsPage = ({ products }) => {
+const ProductsPageContent = ({ products }) => {
   return (
     <Center>
       <Title>All Products</Title>
@@ -17,4 +13,4 @@ const ProductsPage = ({ products }) => {
   );
 };
 
-export default ProductsPage;
+export default ProductsPageContent;

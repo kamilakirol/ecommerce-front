@@ -1,4 +1,6 @@
 import { createContext, useEffect, useState } from "react";
+import { StyleSheetManager } from "styled-components";
+import isPropValid from "@emotion/is-prop-valid";
 
 export const CartContext = createContext({});
 
@@ -39,17 +41,19 @@ const CartContextProvider = ({ children }) => {
   }
 
   return (
-    <CartContext.Provider
-      value={{
-        cartProducts,
-        setCartProducts,
-        addProduct,
-        removeProduct,
-        clearCart,
-      }}
-    >
-      {children}
-    </CartContext.Provider>
+    <StyleSheetManager shouldForwardProp={isPropValid}>
+      <CartContext.Provider
+        value={{
+          cartProducts,
+          setCartProducts,
+          addProduct,
+          removeProduct,
+          clearCart,
+        }}
+      >
+        {children}
+      </CartContext.Provider>
+    </StyleSheetManager>
   );
 };
 
