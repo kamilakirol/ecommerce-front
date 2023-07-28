@@ -33,15 +33,25 @@ const ProductInfoBox = styled.div`
 `;
 
 const PriceRow = styled.div`
-  display: flex;
+  display: block;
   align-items: center;
   margin-top: 5px;
   justify-content: space-between;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    gap: 10px;
+  }
 `;
 
 const Price = styled.div`
-  font-size: 1.4 rem;
+  font-size: 1 rem;
   font-weight: bold;
+  text-align: right;
+  @media screen and (min-width: 768px) {
+    font-size: 1.2 rem;
+    font-weight: bold;
+    text-align: left;
+  }
 `;
 
 const ProductBox = ({ _id, title, description, price, images }) => {
@@ -58,7 +68,7 @@ const ProductBox = ({ _id, title, description, price, images }) => {
         <Title href={url}>{title}</Title>
         <PriceRow>
           <Price>${price}</Price>
-          <Btn onClick={() => addProduct(_id)} primary outline>
+          <Btn onClick={() => addProduct(_id)} primary outline block>
             Add to cart
           </Btn>
         </PriceRow>
