@@ -4,6 +4,14 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "kamila-next-ecommerce.s3.amazonaws.com",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;

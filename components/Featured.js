@@ -7,6 +7,7 @@ import BtnLink from "./BtnLink";
 import CartIcon from "./icons/CartIcon";
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
+import Image from "next/image";
 
 const Bg = styled.div`
   background-color: #222;
@@ -32,12 +33,7 @@ const ColumnsWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px;
-  img {
-    max-width: 100%;
-    max-height: 200px;
-    display: block;
-    margin: 0 auto;
-  }
+
   div:nth-child(1) {
     order: 2;
   }
@@ -46,15 +42,18 @@ const ColumnsWrapper = styled.div`
     div:nth-child(1) {
       order: 0;
     }
-    img {
-      max-width: 100%;
-    }
   }
 `;
 
 const Column = styled.div`
   display: flex;
   align-items: center;
+  height: 200px;
+  position: relative;
+  width: 100%;
+  img {
+    object-fit: contain;
+  }
 `;
 
 const BtnsWrapper = styled.div`
@@ -91,9 +90,11 @@ const Featured = ({ product }) => {
             </div>
           </Column>
           <Column>
-            <img
+            <Image
               src="https://kamila-next-ecommerce.s3.amazonaws.com/1687518121136.jpg"
+              fill
               alt="macbookpro"
+              priority
             />
           </Column>
         </ColumnsWrapper>

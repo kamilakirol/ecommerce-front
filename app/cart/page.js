@@ -7,6 +7,7 @@ import Input from "@/components/Input";
 import Tabel from "@/components/Table";
 import WhiteBox from "@/components/WhiteBox";
 import axios from "axios";
+import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import { styled } from "styled-components";
 
@@ -92,6 +93,7 @@ export default function CartPage() {
       setIsSuccess(true);
       clearCart();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function moreOfThisProduct(id) {
@@ -159,7 +161,12 @@ export default function CartPage() {
                     <tr key={product._id}>
                       <ProductInfoCell>
                         <ProductImageBox>
-                          <img src={product.images[0]} alt={product.title} />
+                          <Image
+                            src={product.images[0]}
+                            width={600}
+                            height={600}
+                            alt={product.title}
+                          />
                         </ProductImageBox>
 
                         {product.title}

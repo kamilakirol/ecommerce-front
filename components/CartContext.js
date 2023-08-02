@@ -13,12 +13,14 @@ const CartContextProvider = ({ children }) => {
     if (cartProducts?.length > 0) {
       ls?.setItem("cart", JSON.stringify(cartProducts));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cartProducts]);
 
   useEffect(() => {
     if (ls && ls.getItem("cart")) {
       setCartProducts(JSON.parse(ls.getItem("cart")));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function addProduct(productId) {
